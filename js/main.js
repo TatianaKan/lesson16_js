@@ -14,8 +14,10 @@ var userObj = {
     firstName: 'Иван',
     lastName: 'Иванов',
     age: 25,
-
+fullName() {
+    return `${userObj.firstName} ${userObj.lastName}`;
 }
+};
 /*
  * #2
  *
@@ -28,10 +30,14 @@ var userObj = {
  * userObj.fullName() → 'Имя Фамилия'.
  */
 
+console.log(userObj.fullName());
 /*
  * #3
  *
- * Дана функция defUpperStr('My text'), которая возвращает текст, преобразованный в верхний регистр, т.е:
+ * Дана функция
+ * 
+ *  defUpperStr('My text'), которая возвращает текст, преобразованный в верхний регистр,
+ *  т.е:
  * defUpperStr('My text') → 'MY TEXT'.
  *
  * Если функция вызывается без параметра defUpperStr(), она не должна возвращать undefined,
@@ -42,15 +48,28 @@ var userObj = {
  */
 
 /* eslint-disable capitalized-comments */
+
+
+
+function defUpperStr (str) {
+    return (str ||'default text').toUpperCase();
+
+}
+
+console.log(defUpperStr('My text')); 
+console.log(defUpperStr());
+
 // console.log(defUpperStr('My text')); // MY TEXT
 
 // console.log(defUpperStr()); // DEFAULT TEXT
 
+// var 
 /*
  * #4
  *
  * Создайте функцию evenFn(n), которая принимает параметром число – количество итераций цикла,
- * т.е. for 0..n. Функция должна вернуть массив, состоящий только из четных значений, генерируемых в цикле.
+ * т.е. for 0..n. Функция должна вернуть массив, состоящий только из четных значений, 
+ * генерируемых в цикле.
  *
  * Причем:
  * 0 не должен попадать в результирующий массив
@@ -63,6 +82,31 @@ var userObj = {
  * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
 
+
+// var newArray = [];
+// function evenFn(n) {
+//     for (var i=1; i>n; i++) {
+       
+//         if (i % 2 === 0) {
+//             newArray.push(array[i]);
+//         }
+//     }
+//     return newArray;
+// };
+
+
+
+function evenFn(n) {
+    var newArray = [];
+    for (var i=0; i<=n; i++) {
+           if (i % 2 == 0 && i!=0) 
+            newArray.push(i);
+        }
+    return newArray;
+}
+console.log(evenFn(10));
+console.log(evenFn(15));
+console.log(evenFn(20));
 // console.log(evenFn(10)); // [2, 4, 6, 8, 10]
 
 // console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
@@ -84,6 +128,35 @@ var userObj = {
  * В реализации функции обязательно должны быть использованы операторы switch / case / default.
  */
 
+function weekFn(n) {
+    // var dayNum = 2, day;
+switch (n) {
+case 1: day ='Понедельник'; break;
+case 2: day ='Вторник'; break;
+case 3: day ='Среда'; break;
+case 4: day ='Четверг'; break;
+case 5: day ='Пятница'; break;
+case 6: day ='Суббота'; break;
+case 7: day ='Воскресенье'; break;
+default: day=null ;
+}
+return day;
+
+}
+console.log(weekFn(1));
+console.log(weekFn(2));
+console.log(weekFn(3));
+console.log(weekFn(4));
+console.log(weekFn(5));
+console.log(weekFn(6));
+console.log(weekFn(7));
+console.log(weekFn(8));
+
+
+
+
+
+
 // console.log(weekFn(1)); // 'Понедельник'
 
 // console.log(weekFn(3)); // 'Среда'
@@ -95,6 +168,8 @@ var userObj = {
 // console.log(weekFn(1.5)); // null
 
 // console.log(weekFn('2')); // null
+
+
 
 /*
  * #6
@@ -113,6 +188,22 @@ var userObj = {
  * При выполнении задания допускается использовать только тернарный оператор ?.
  * Использование операторов if, switch – запрещено.
  */
+function ageClassification(n) {
+return (n<=0) ? null : (n<=24) ? 'детский возраст': (n<=44) ? 'молодой возраст':
+(n<=65) ? 'средний возраст': (n<=75) ? 'пожилой возраст': (n<=90) ? 'старческий возраст':
+(n<=122) ? 'долгожители': null;
+
+ 
+}
+
+console.log(ageClassification(-1));
+console.log(ageClassification(10));
+console.log(ageClassification(24));
+console.log(ageClassification(50));
+console.log(ageClassification(67));
+console.log(ageClassification(75));
+console.log(ageClassification(100));
+console.log(ageClassification(200));
 
 // console.log('-1 :', ageClassification(-1)); // -1 : null
 
@@ -166,6 +257,21 @@ var userObj = {
  * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
  */
 
+
+
+function oddFn(n) {
+    var i=1; narr = [];
+while (i<=n)  {
+narr.push(i);
+i+=2;
+}
+
+return narr;
+};
+
+console.log (oddFn(10));
+console.log (oddFn(25));
+console.log (oddFn(30));
 // console.log(oddFn(10)); // [1, 3, 5, 7, 9]
 
 // console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
@@ -204,6 +310,23 @@ var userObj = {
  * mainFunc(2, 5, cbAdd) → 7
  * mainFunc(2, 5, 'not a func') → false
  */
+
+function mainFunc(a, b, func) {
+// console.log(typeof func);
+
+var cbRandom = Math.random(a,b);
+func (mainFunc);
+// cbPow = Math.pow(a,b);
+// cbAdd = function(a,b){
+
+//     return a+b;
+// }
+}
+
+
+// mainFunc(a,b, func);
+console.log(2,3,cbRandom);
+
 
 // console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
 
